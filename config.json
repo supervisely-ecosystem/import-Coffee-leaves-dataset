@@ -1,10 +1,10 @@
 {
-  "name": "Import StrawDI dataset",
+  "name": "Import Coffee dataset",
   "type": "app",
   "categories": [
     "Images"
   ],
-  "description": "Import StrawDI(strawberry) dataset",
+  "description": "Import Coffee leaves dataset",
   "docker_image": "supervisely/base-py-sdk:6",
   "main_script": "src/main.py",
   "modal_template": "src/modal.html",
