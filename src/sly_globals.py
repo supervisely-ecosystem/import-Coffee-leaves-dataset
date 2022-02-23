@@ -35,7 +35,7 @@ train_percent = int(os.environ["modal.state.samplePercentTrain"])
 val_percent = int(os.environ["modal.state.samplePercentVal"])
 test_percent = int(os.environ["modal.state.samplePercentTest"])
 
-sample_img_count = {'Train': 4 * train_percent, 'Val': int(0.5 * val_percent), 'Test': int(0.5 * test_percent)}
+sample_img_count = {'Train': 4 * train_percent, 'Val': round(int(0.5001 * val_percent)), 'Test': int(0.5001 * test_percent)}
 
 project_name = 'coffee'
 work_dir = 'coffee_data'
