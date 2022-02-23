@@ -27,8 +27,6 @@ for ds in [train_ds, val_ds, test_ds]:
     if len(ds) != 2:
         datasets.append(ds[1:-1].replace('\'', ''))
 
-# datasets = ['Val'] # TODO debug
-
 if len(datasets) == 0:
     logger.warn('You have not selected a dataset to import')
     my_app.stop()
@@ -36,10 +34,6 @@ if len(datasets) == 0:
 train_percent = int(os.environ["modal.state.samplePercentTrain"])
 val_percent = int(os.environ["modal.state.samplePercentVal"])
 test_percent = int(os.environ["modal.state.samplePercentTest"])
-
-# train_percent = 20 # TODO debug
-# val_percent = 20 # TODO debug
-# test_percent = 20 # TODO debug
 
 sample_img_count = {'Train': 4 * train_percent, 'Val': int(0.5 * val_percent), 'Test': int(0.5 * test_percent)}
 

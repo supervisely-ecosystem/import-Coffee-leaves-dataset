@@ -23,13 +23,11 @@ def get_tags(file_id):
 
 def create_ann(ann_path):
 
-    labels = []
-
     ann_np_leaf = sly.imaging.image.read(ann_path)[:, :, g.leaf_idx]
     mask_leaf = ann_np_leaf == g.obj_class_color_idxs[g.leaf_idx]
     bitmap = sly.Bitmap(mask_leaf)
     label = sly.Label(bitmap, g.obj_classes[g.leaf_idx])
-    labels.append(label)
+    labels = [label]
 
     ann_np_symptom = sly.imaging.image.read(ann_path)[:, :, g.symptom_idx]
     mask_symptom = ann_np_symptom == g.obj_class_color_idxs[g.symptom_idx]
@@ -63,9 +61,9 @@ def read_csv(file_path):
             g.tags_data[row[0]] = row[1:]
 
 
-@g.my_app.callback("import_strawberry")
+@g.my_app.callback("import_coffee")
 @sly.timeit
-def import_strawberry(api: sly.Api, task_id, context, state, app_logger):
+def import_coffee(api: sly.Api, task_id, context, state, app_logger):
 
     gdown.download(g.coffee_url, g.archive_path, quiet=False)
     extract_zip()
@@ -107,7 +105,7 @@ def main():
         "TEAM_ID": g.TEAM_ID,
         "WORKSPACE_ID": g.WORKSPACE_ID
     })
-    g.my_app.run(initial_events=[{"command": "import_strawberry"}])
+    g.my_app.run(initial_events=[{"command": "import_coffee"}])
 
 
 if __name__ == '__main__':
